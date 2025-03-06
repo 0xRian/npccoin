@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPC Plinko Game</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@1.33.0/lib/index.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #10141c;
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 320px;
+            background: #1e252f;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+        .sidebar h2 {
+            color: #00ffcc;
+            margin-bottom: 10px;
+        }
+        .sidebar label {
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        .sidebar input, .sidebar select {
+            padding: 10px;
+            font-size: 1rem;
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        .sidebar button {
+            padding: 15px;
+            font-size: 1rem;
+            background: #00ffcc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .sidebar button:hover {
+            background: #00bb99;
+        }
+        .game-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Plinko Bet</h2>
+            <label for="betAmount">Bet Amount:</label>
+            <input type="number" id="betAmount" value="1" min="0.1" step="0.1">
+            
+            <label for="rows">Rows:</label>
+            <select id="rows">
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="12">12</option>
+            </select>
+            
+            <label for="risk">Risk:</label>
+            <select id="risk">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            
+            <button id="placeBet">Play</button>
+        </div>
+        <div class="game-container" id="game-container"></div>
+    </div>
+    
+    <script>
+        let game;
+
+        function startGame() {
+            const config = {
+                type: Phaser.AUTO,
+                width: window.innerWidth - 320,
+                height: window.innerHeight,
+                parent: 'game-container',
+                physics: {
+                    default: 'arcade',
+                    arcade: { gravity: { y: 900 }, debug: false }
+                },
+                scene: {
+                    preload: preload,
+                    create: create
+                }
+            };
+            game = new Phaser.Game(config);
+        }
+
+        function preload() {
+            this.load.image('ball', 'npc_coin.png');
+            this.load.image('peg', 'npc_character.png');
+            this.load.image('slot', 'npc_slot.png');
+        }
+
+        function create() {
+            let pegs = this.physics.add.staticGroup();
+            let rows = parseInt(document.getElementById("rows").value);
+            let spacing = (window.innerWidth - 320) / (rows + 1);
+            
+            for (let y = 100; y < rows * 80; y += 80) {
+                for (let x = spacing; x < window.innerWidth - 320 - spacing; x += spacing) {
+                    pegs.create(x + (y % 160 === 0 ? spacing / 2 : 0), y, 'peg').setScale(0.4);
+                }
+            }
+            
+            let slots = this.physics.add.staticGroup();
+            let slotWidth = (window.innerWidth - 320) / (rows + 1);
+            for (let i = 0; i <= rows; i++) {
+                let x = slotWidth * i + slotWidth / 2;
+                slots.create(x, window.innerHeight - 50, 'slot').setScale(0.6);
+            }
+        }
+
+        document.getElementById('placeBet').addEventListener('click', function () {
+            let betAmount = parseFloat(document.getElementById('betAmount').value);
+            if (betAmount <= 0) {
+                alert("Enter a valid bet amount.");
+                return;
+            }
+
+            let ball = game.scene.scenes[0].physics.add.image((window.innerWidth - 320) / 2, 50, 'ball').setScale(0.5);
+            ball.setBounce(0.6);
+            ball.setCollideWorldBounds(true);
+            game.scene.scenes[0].physics.add.collider(ball, game.scene.scenes[0].physics.world.staticBodies);
+        });
+
+        startGame();
+    </script>
+</body>
+</html>

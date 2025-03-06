@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$NPC - The Non-Playable Coin</title>
+    <style>
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px #00ffcc; }
+            50% { box-shadow: 0 0 20px #007bff; }
+            100% { box-shadow: 0 0 10px #00ffcc; }
+        }
+        @keyframes glitch {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-2px, 2px); }
+            50% { transform: translate(2px, -2px); }
+            75% { transform: translate(-2px, 2px); }
+            100% { transform: translate(0, 0); }
+        }
+        body {
+            background-color: #0d0d0d;
+            color: white;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px;
+            background: #1a1a1a;
+            border-radius: 15px;
+            animation: glow 2s infinite alternate;
+        }
+        .logo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid #00ffcc;
+            margin-top: 20px;
+            animation: glitch 0.2s infinite;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 15px;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .buy-button {
+            background: linear-gradient(45deg, #00ffcc, #007bff);
+            transition: transform 0.2s;
+        }
+        .buy-button:hover {
+            background: linear-gradient(45deg, #007bff, #00ffcc);
+            transform: scale(1.1);
+        }
+        .join-button {
+            background: linear-gradient(45deg, #ff0066, #ffcc00);
+            transition: transform 0.2s;
+        }
+        .join-button:hover {
+            background: linear-gradient(45deg, #ffcc00, #ff0066);
+            transform: scale(1.1);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            font-size: 1.3rem;
+            margin: 10px 0;
+            color: #00ffcc;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 1rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>$NPC - The Non-Playable Coin</h1>
+        <p>No thoughts. Just pump. 🤖💀</p>
+        
+        <img src="npc_memecoin.png" alt="$NPC Logo" class="logo">
+        <p>The first token made for **default settings humans**. Join the **glitch in the matrix** before it's too late.</p>
+        
+        <h2>Why Buy $NPC?</h2>
+        <ul>
+            <li>✅ 100% Meme-Powered</li>
+            <li>✅ No Roadmap, No Thoughts</li>
+            <li>✅ Just Pump, No Emotions</li>
+        </ul>
+        
+        <h2>Join the NPC Army</h2>
+        <a href="#" class="button buy-button">🚀 Buy on Pump.fun</a>
+        <a href="#" class="button join-button">💬 Join Telegram</a>
+        
+        <footer>
+            <p>🚀 $NPC - The Default Settings Coin 🚀</p>
+        </footer>
+    </div>
+</body>
+</html>

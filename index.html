@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$NPC - The Non-Playable Coin</title>
+    <link rel="icon" type="image/png" href="npc_memecoin.png">
+    <style>
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px #00ffcc; }
+            50% { box-shadow: 0 0 20px #007bff; }
+            100% { box-shadow: 0 0 10px #00ffcc; }
+        }
+        body {
+            background-color: #0d0d0d;
+            color: white;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px;
+            background: #1a1a1a;
+            border-radius: 15px;
+            animation: glow 2s infinite alternate;
+        }
+        .logo {
+            width: 50%;
+            max-width: 180px;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid #00ffcc;
+            margin-top: 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+        }
+        p {
+            font-size: 1rem;
+            color: #ccc;
+            padding: 0 10px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 10px;
+            color: white;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+            width: 90%;
+            max-width: 300px;
+            text-align: center;
+        }
+        .buy-button {
+            background: linear-gradient(45deg, #00ffcc, #007bff);
+        }
+        .buy-button:hover {
+            background: linear-gradient(45deg, #007bff, #00ffcc);
+            transform: scale(1.05);
+        }
+        .join-button {
+            background: linear-gradient(45deg, #ff0066, #ffcc00);
+        }
+        .join-button:hover {
+            background: linear-gradient(45deg, #ffcc00, #ff0066);
+            transform: scale(1.05);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            font-size: 1rem;
+            margin: 8px 0;
+            color: #00ffcc;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 0.9rem;
+            }
+            .button {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>$NPC - The Non-Playable Coin</h1>
+        <p>No thoughts. Just pump. 🤖💀</p>
+        
+        <img src="npc_memecoin.png" alt="$NPC Logo" class="logo">
+        <p>The first token made for **default settings humans**. Join the **glitch in the matrix** before it's too late.</p>
+        
+        <h2>Why Buy $NPC?</h2>
+        <ul>
+            <li>✅ 100% Meme-Powered</li>
+            <li>✅ No Roadmap, No Thoughts</li>
+            <li>✅ Just Pump, No Emotions</li>
+        </ul>
+        
+        <h2>Join the NPC Army</h2>
+        <div class="button-container">
+            <a href="https://www.pump.fun" target="_blank " class="button buy-button">🚀 Buy on Pump.fun</a>
+            <a href="https://www.google.com" target="_blank" class="button join-button">💬 Join Telegram</a>
+        </div>
+        
+        <footer>
+            <p>🚀 $NPC - The Default Settings Coin 🚀</p>
+        </footer>
+    </div>
+</body>
+</html>
